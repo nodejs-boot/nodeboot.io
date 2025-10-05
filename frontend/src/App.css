@@ -1,0 +1,81 @@
+/* Node-Boot Framework Custom Styles */
+
+.App {
+  min-height: 100vh;
+  font-family: system-ui, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(7, 231, 112, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(7, 231, 112, 0.5);
+}
+
+/* Selection Style */
+::selection {
+  background-color: rgba(7, 231, 112, 0.2);
+  color: #003720;
+}
+
+::-moz-selection {
+  background-color: rgba(7, 231, 112, 0.2);
+  color: #003720;
+}
+
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #07E770;
+  outline-offset: 2px;
+}
+
+/* Code Blocks */
+code {
+  font-family: Monaco, Consolas, "Courier New", monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Smooth Animations */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Remove default margins for better spacing control */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* Ensure proper line height for readability */
+body {
+  line-height: 1.6;
+}
