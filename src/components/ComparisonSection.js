@@ -106,9 +106,17 @@ const ComparisonSection = () => {
                     margin: '0 auto 1rem',
                   }}
                 >
-                  <Typography variant="h4" sx={{ color: '#07E770', fontWeight: 700 }}>
-                    NB
-                  </Typography>
+                    <Box
+                        component="img"
+                        src="/nodeboot-logo.png"
+                        alt="Express.js"
+                        sx={{
+                            width: { xs: 48, sm: 50 },
+                            height: { xs: 48, sm: 50 },
+                            objectFit: 'contain',
+                            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                        }}
+                    />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 600, color: '#003720', mb: 1 }}>
                   Node-Boot
@@ -136,9 +144,17 @@ const ComparisonSection = () => {
                     margin: '0 auto 1rem',
                   }}
                 >
-                  <Typography variant="h4" sx={{ color: '#637381', fontWeight: 700 }}>
-                    E
-                  </Typography>
+                    <Box
+                        component="img"
+                        src="/icons/Express.svg"
+                        alt="Express.js"
+                        sx={{
+                            width: { xs: 48, sm: 50 },
+                            height: { xs: 48, sm: 50 },
+                            objectFit: 'contain',
+                            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                        }}
+                    />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 600, color: '#003720', mb: 1 }}>
                   Express.js
@@ -166,9 +182,17 @@ const ComparisonSection = () => {
                     margin: '0 auto 1rem',
                   }}
                 >
-                  <Typography variant="h4" sx={{ color: '#637381', fontWeight: 700 }}>
-                    N
-                  </Typography>
+                    <Box
+                        component="img"
+                        src="/icons/Nest.svg"
+                        alt="NestJs"
+                        sx={{
+                            width: { xs: 48, sm: 50 },
+                            height: { xs: 48, sm: 50 },
+                            objectFit: 'contain',
+                            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                        }}
+                    />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 600, color: '#003720', mb: 1 }}>
                   NestJS
@@ -196,9 +220,17 @@ const ComparisonSection = () => {
                     margin: '0 auto 1rem',
                   }}
                 >
-                  <Typography variant="h4" sx={{ color: '#637381', fontWeight: 700 }}>
-                    ▲
-                  </Typography>
+                    <Box
+                        component="img"
+                        src="/icons/Next.svg"
+                        alt="NextJs"
+                        sx={{
+                            width: { xs: 48, sm: 50 },
+                            height: { xs: 48, sm: 50 },
+                            objectFit: 'contain',
+                            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                        }}
+                    />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 600, color: '#003720', mb: 1 }}>
                   Next.js
