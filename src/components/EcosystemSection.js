@@ -22,7 +22,7 @@ const EcosystemSection = () => {
         { name: 'Node', icon: '/icons/Node.js.svg' },
         { name: 'Express', icon: '/icons/Express.svg' },
         { name: 'Fastify', icon: '/icons/Fastify.svg' },
-        { name: 'Koa', icon: '/icons/Koa.png' },
+        { name: 'Koa', icon: '/icons/koa.png' },
         { name: 'Encore', icon: '/icons/encore.svg' }
       ]
     },
@@ -33,7 +33,7 @@ const EcosystemSection = () => {
       color: '#3b82f6',
       technologies: [
         { name: 'AWS Lambda', icon: '/icons/Lambda.svg' },
-        { name: 'Netlify', icon: '/icons/Netlify.svg' },
+        { name: 'Netlify', icon: '/icons/netlify.svg' },
         { name: 'Vercel', icon: '/icons/Vercel.svg' },
         { name: 'Google Cloud Functions', icon: '/icons/Cloud Functions.svg' },
         { name: 'Cloudflare', icon: '/icons/Cloudflare.svg' }
@@ -48,7 +48,7 @@ const EcosystemSection = () => {
         { name: 'AWS', icon: '/icons/AWS.svg' },
         { name: 'Firebase', icon: '/icons/Firebase.svg' },
         { name: 'Redis', icon: '/icons/Redis.svg' },
-        { name: 'OpenAI', icon: '/icons/OpenAI.svg' },
+        { name: 'OpenAI', icon: '/icons/openai.svg' },
         { name: 'OpenAPI', icon: '/icons/OpenAPI.svg' },
         { name: 'Backstage', icon: '/icons/backstage.svg' },
       ]
@@ -59,7 +59,7 @@ const EcosystemSection = () => {
       icon: <SpeedIcon sx={{ fontSize: 20 }} />,
       color: '#f59e0b',
       technologies: [
-        { name: 'PM2', icon: '/icons/PM2.svg' },
+        { name: 'PM2', icon: '/icons/pm2.svg' },
         { name: 'Platformatic', icon: '/icons/platformatic.png' },
         { name: 'Docker', icon: '/icons/Docker.svg' },
         { name: 'Kubernetes', icon: '/icons/Kubernetes.svg' }
@@ -75,10 +75,10 @@ const EcosystemSection = () => {
         { name: 'MySQL', icon: '/icons/MySQL.svg' },
         { name: 'SQLite', icon: '/icons/SQLite.svg' },
         { name: 'PostgreSQL', icon: '/icons/PostgresSQL.svg' },
-        { name: 'MariaDB', icon: '/icons/MariaDB.svg' },
+        { name: 'MariaDB', icon: '/icons/mariaDB.svg' },
         { name: 'Oracle', icon: '/icons/Oracle.svg' },
         { name: 'SQL Server', icon: '/icons/Microsoft SQL Server.svg' },
-        { name: 'CockroachDB', icon: '/icons/CockroachDB.svg' }
+        { name: 'CockroachDB', icon: '/icons/cockroachdb.svg' }
       ]
     }
   ];
