@@ -63,9 +63,11 @@ const CodeBlock = ({ children, language = 'javascript', showCopy = true, ...prop
           ]
         : [
             // Node-Boot decorators
-            { pattern: /@(NodeBootApplication|EnableAutoConfiguration|Autowired|RestController|PostMapping|GetMapping|RequestBody|PreAuthorize|RateLimit|Injectable|InjectRepository|Repository|Service|Component|Controller|PathVariable|RequestParam|Valid|Transactional|EnableDI|EnableOpenApi|EnableSwaggerUI|EnableActuator|EnableRepositories)\b/, color: '#07E770', weight: 600 },
-            // Keywords
-            { pattern: /\b(import|export|from|class|function|const|let|var|async|await|return|if|else|for|while|try|catch|new|this|super|extends|implements|interface|type)\b/, color: '#07E770', weight: 500 },
+            { pattern: /@(NodeBootApplication|EnableAutoConfiguration|Autowired|RestController|PostMapping|GetMapping|RequestBody|PreAuthorize|RateLimit|Injectable|InjectRepository|Repository|Service|Component|Controller|PathVariable|RequestParam|Valid|Transactional|EnableDI|EnableOpenApi|EnableSwaggerUI|EnableActuator|EnableRepositories|EnableComponentScan|EnableScheduling|EnableHttpClients|EnableValidations|Post|Get|HttpCode|Authorized|OpenAPI|ResponseSchema|DataRepository|ValidatorConstraint|IsNotEmpty|Matches|IsValidQueryFilter|Configuration|Bean|EnableOpenAI)\b/, color: '#07E770', weight: 600 },
+            // Node-Boot Keywords
+            { pattern: /\b(useNodeBoot|useRepository|useService|useConfig|usePactum|useMongoContainer|NotFoundError|orElseThrow|optionalOf|ifPresentThrow|runOnTransactionCommit|PagingAndSortingRepository|ValidatorConstraintInterface|HttpServer)\b/, color: '#07E770', weight: 500 },
+              // Keywords
+              { pattern: /\b(import|export|from|class|function|const|let|var|async|await|return|if|else|for|while|try|catch|new|this|super|extends|implements|interface|type|private|constructor|readonly|Promise|public)\b/, color: '#ff7b72', weight: 500 },
             // Strings
             { pattern: /(['"`])((?:(?!\1)[^\\]|\\.)*)(\1)/, color: '#a5d6ff', weight: 400 },
             // Comments

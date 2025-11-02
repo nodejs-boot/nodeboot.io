@@ -16,6 +16,9 @@ import {
   Speed,
   Security,
   AutoAwesome,
+  VerifiedUser,
+  Storage,
+  Extension,
 } from '@mui/icons-material';
 import CodeBlock from './CodeBlock';
 
@@ -54,73 +57,204 @@ const LevelUpSection = () => {
       icon: <TrendingUp sx={{ color: '#ffffff', fontSize: 32 }} />,
       title: 'Enterprise Scalability',
       description: 'Transform your Node.js apps into enterprise-grade solutions with battle-tested patterns and practices.',
-      benefits: ['Microservices architecture', 'Auto-scaling', 'Service mesh ready', 'Cloud deployment'],
-      codeExample: `@NodeBootApplication()
-@EnableAutoConfiguration()
-export class ScalableApp {
-  @Autowired
-  private userService: UserService;
-  
-  @GetMapping('/users')
-  async getUsers() {
-    return this.userService.findAll();
-  }
+      benefits: ['Microservices architecture', 'Actuator Enabled', 'Optimized for Docker and Kubernetes', 'Pluggable into Process Managers', 'Built-in Validations Framework'],
+      codeExample: `@EnableDI(Container)
+@EnableOpenApi()
+@EnableSwaggerUI()
+@EnableActuator()
+@EnableRepositories()
+@EnableScheduling()
+@EnableHttpClients()
+@EnableValidations()
+@EnableComponentScan()
+@NodeBootApplication()
+export class FactsServiceApp implements NodeBootApp {
+    start(): Promise<NodeBootAppView> {
+        return NodeBoot.run(HttpServer);
+    }
 }`,
     },
     {
       icon: <Speed sx={{ color: '#ffffff', fontSize: 32 }} />,
       title: 'Developer Productivity',
       description: 'Stop writing boilerplate and focus on business logic. Node-Boot handles the heavy lifting.',
-      benefits: ['Zero configuration', 'Auto-wiring', 'Hot reloading', 'Instant APIs'],
+      benefits: ['AOT Component Scanning', 'Dependency Injection', 'OpenAPI Documentation', 'API versioning', 'Authorization'],
       codeExample: `// Before: 50+ lines of Express setup
 // After: Just add decorators
 
-@RestController('/api/products')
+@Controller("/products", "v1")
 export class ProductController {
-  @PostMapping()
-  async createProduct(@RequestBody product: Product) {
-    return await this.productService.save(product);
-  }
-}`,
-    },
-    {
-      icon: <Security sx={{ color: '#ffffff', fontSize: 32 }} />,
-      title: 'Security by Default',
-      description: 'Built-in security features that protect your applications without complex configuration.',
-      benefits: ['JWT authentication', 'RBAC authorization', 'Rate limiting', 'CORS protection'],
-      codeExample: `@RestController('/admin')
-@PreAuthorize('hasRole("ADMIN")')
-export class AdminController {
+  \n
+  constructor(
+    private readonly repository: ProductRepository, 
+    private readonly logger: Logger
+  ) {}
   
-  @GetMapping('/users')
-  @RateLimit(100, '1h')
-  async getAllUsers() {
-    // Automatically secured endpoint
-    return this.userService.findAll();
+  @Post("/")
+  @HttpCode(201)
+  @Authorized()
+  @OpenAPI({summary: "Create a new user"})
+  @ResponseSchema(ProductModel)
+  async createProduct(@RequestBody product: Product) {
+    return this.repository.save(product);
   }
-}`,
+}
+`,
     },
     {
       icon: <AutoAwesome sx={{ color: '#ffffff', fontSize: 32 }} />,
       title: 'Modern Development',
       description: 'Embrace the latest Node.js features and patterns with TypeScript-first development.',
-      benefits: ['TypeScript native', 'Decorator support', 'Async/await', 'Modern ES modules'],
-      codeExample: `@Injectable()
+      benefits: ['TypeScript native', 'Decorator support', 'Async/await', 'Modern ES modules', 'Katxupa Extension Library.'],
+      codeExample: `@Service()
 export class UserService {
+  \n
   constructor(
-    @InjectRepository(User)
-    private userRepo: Repository<User>
+    private readonly userRepository: UserRepository
   ) {}
   
-  async findByEmail(email: string): Promise<User> {
-    return this.userRepo.findOne({ email });
+  async getBySlug(slug: string): Promise<User> {
+    this.logger.debug(\`Getting user by slug: getBySlug(slug=\${slug})\`);
+    return (await this.userRepository.findOneBy(slug))
+    .orElseThrow(() => new NotFoundError(\`No user found for slug \${slug}\`));
+  }
+ 
+  async getAll(filter: FindOptionsWhere<User>, paging: PagingRequest): Promise<Page<User>> {
+    this.logger.info("Getting paginated users with filters");
+    return this.userRepository.findPaginated(filter, paging);
   }
 }`,
+    },
+    {
+      icon: <Code sx={{ color: '#ffffff', fontSize: 32 }} />,
+      title: 'Testability at Core',
+      description: 'Node-Boot is shipped with Node-Boot Tests Framework that connects the test engine with the application runtime for full testability.',
+      benefits: ['Native node:test', 'Access to DI container', 'Mock and spy real services', 'In-test timer control', 'Test Containers', 'Persistence layer testing', 'HTTP endpoints testing', 'Opinionated integrations'],
+      codeExample: `    const { useRepository, useService } = useNodeBoot(
+        AwesomeApp,
+        ({ useConfig, usePactum, useMongoContainer }) => {
+            useConfig({
+                app: {port: 20000},
+            });
+    
+            useMongoContainer({
+                dbName: "test-db",
+                image: "mongo:8",
+            });
+    
+            usePactum();
+        });
+    
+    it("should retrieve data from the service", async () => {
+        const userService = useService(UserService);
+        const users = await userService.findAllUser();
+        assert.ok(users, "Expected repository to return users");
+     });
+
+        `,
+    },
+    {
+      icon: <VerifiedUser sx={{ color: '#ffffff', fontSize: 32 }} />,
+      title: 'Built-in Beans Validations',
+      description: 'Enterprise-grade validation framework with class-validator integration, custom validators, and decorator-based validation patterns.',
+      benefits: ['Class-validator integration', 'Custom validation decorators', 'Nested object validation', 'Conditional validation rules', 'Automatic error handling', 'Schema-based validation', 'Type-safe validations'],
+      codeExample: `// Custom validator decorator
+@ValidatorConstraint({name: "isValidQueryFilter", async: false})
+export class IsValidQueryFilterConstraint implements ValidatorConstraintInterface {
+    \n
+    validate(value: any, _args: ValidationArguments) {
+       // validation goes here
+    }
+    \n
+    defaultMessage(args: ValidationArguments) {
+       // validation message goes here
+    }
+}
+            
+export class CreateUserViewRequest {
+    \n
+    @IsNotEmpty()
+    @Matches(SLUG_REGEXP, { message: "Validation message goes here" })
+    slug: string;
+    \n
+    @IsValidQueryFilter({message: "Validation message goes here"})
+    filters?: EnhancedFilter;
+}
+`,
+    },
+    {
+      icon: <Storage sx={{ color: '#ffffff', fontSize: 32 }} />,
+      title: 'Data Repositories Framework',
+      description: 'Full-featured repository pattern for SQL and NoSQL databases with built-in pagination, sorting, filtering, and transaction management.',
+      benefits: ['Repository pattern implementation', 'SQL & NoSQL support', 'Built-in pagination & sorting', 'Advanced filtering', 'Transaction decorators', 'Transaction hooks', 'Repository dependency injection', 'Type-safe queries'],
+      codeExample: `@DataRepository(User)
+export class UserRepository extends PagingAndSortingRepository<User> {}
+     
+@Service()
+export class UserService {
+     
+    constructor(
+        private readonly userRepository: UserRepository
+    ) {}
+           
+    @Transactional()
+    public async createUser(userData: CreateUserDto): Promise<User> {
+    
+        optionalOf(await this.userRepository.findOneBy({ email: userData.email}))
+            .ifPresentThrow(() => new HttpError(409, \`User already exists\`));
+          
+        runOnTransactionCommit(() => {
+            this.logger.info("Transaction was successfully committed");
+        });
+         
+        return this.userRepository.save(userData);
+    }
+}`,
+    },
+    {
+      icon: <Extension sx={{ color: '#ffffff', fontSize: 32 }} />,
+      title: 'Auto-Configurations Framework',
+      description: 'Plug-and-play extensibility through auto-configuration classes and starter packages.',
+      benefits: ['Configuration classes', 'Bean factory decorators', 'Starter packages ecosystem', 'Auto-binding mechanisms', 'Conditional configurations', 'Modular architecture', 'Third-party extensions'],
+      codeExample: `@Configuration()
+export class OpenAIConfiguration {
+          
+    @Bean()
+    public openAiConfig({logger, config, iocContainer}: BeansContext): void {
+        logger.info("Configuring OpenAI Client");
+               
+        const openAiConfigs = config.getOptional<OpenAiConfigProperties>(
+            "integrations.openai"
+        );
+          
+        if (openAiConfigs) {
+            const openAiClient = new OpenAI(openAiConfigs);
+
+            iocContainer.set(OpenAI, openAiClient);
+        }
+    }
+}
+      
+export const EnableOpenAI = (): ClassDecorator => {
+    return () => {
+        new OpenAIConfiguration();
+    };
+};
+   
+@EnableDI(Container)      
+@EnableOpenAI() // Enable OpenAI feature which makes the OpenAI client available for injection
+@NodeBootApplication()
+export class FactsServiceApp implements NodeBootApp {
+    start(): Promise<NodeBootAppView> {
+        return NodeBoot.run(HttpServer);
+    }
+}
+`,
     },
   ];
 
   return (
-    <SectionContainer>
+    <SectionContainer id="level-up-section">
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Typography
@@ -259,11 +393,13 @@ export class UserService {
               margin: '0 auto 2rem',
             }}
           >
-            Join thousands of developers who have already upgraded their Node.js development 
-            experience with Node-Boot.
+            Experience the future of Node.js development with enterprise-grade patterns,
+            modern architecture, and future-proof solutions built for tomorrow's challenges.
           </Typography>
           <Stack direction="row" spacing={2} justifyContent="center">
             <Button
+                target="_blank"
+                href="https://start.nodeboot.io"
               variant="contained"
               size="large"
               sx={{
@@ -275,6 +411,8 @@ export class UserService {
               Get Started Now
             </Button>
             <Button
+                target="_blank"
+                href="https://nodeboot.gitbook.io"
               variant="outlined"
               size="large"
               sx={{
