@@ -231,7 +231,7 @@ export class SampleApp implements NodeBootApp {
                                 maxWidth: '600px',
                             }}
                         >
-                            Code in freedom. Test in reality.
+                            Code in freedom. Test the real thing, not mocks!
                         </Typography>
 
                         <Stack direction={{xs: 'column', sm: 'row'}} spacing={2} sx={{marginBottom: 4}}>
