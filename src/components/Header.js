@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { GitHub, Menu, Close, Terminal as TerminalIcon, MenuBook, Code } from '@mui/icons-material';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import ScienceIcon from '@mui/icons-material/Science';
 import { styled } from '@mui/material/styles';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
@@ -92,10 +93,15 @@ const Header = () => {
       icon: <TerminalIcon fontSize="small" />
     },
       {
-          label: 'TypeScript Extensions',
-          href: 'https://katxupa.gitbook.io',
-          icon: <Code fontSize="small" />
-      }
+          label: 'Test Framework',
+          href: 'https://test.nodeboot.io',
+          icon: <ScienceIcon fontSize="small" />
+      },
+    {
+      label: 'TypeScript Extensions',
+      href: 'https://katxupa.gitbook.io',
+      icon: <Code fontSize="small" />
+    }
   ];
 
   return (
